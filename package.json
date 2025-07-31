@@ -1,0 +1,65 @@
+{
+  "name": "ai-pr-campaign-platform",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "AI-powered PR campaign analysis platform leveraging Qloo's Taste AI™ API and Google Gemini AI for cultural intelligence and comprehensive campaign strategy generation. Built for Qloo LLM Hackathon.",
+  "keywords": [
+    "ai",
+    "pr",
+    "campaign",
+    "cultural-intelligence",
+    "qloo-api",
+    "gemini-ai",
+    "react",
+    "marketing",
+    "analytics",
+    "data-visualization",
+    "hackathon",
+    "qloo-llm"
+  ],
+  "author": "Shubham Kumar <shubham.kumar@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/newturk/NexPR.git"
+  },
+  "homepage": "https://github.com/newturk/NexPR#readme",
+  "bugs": {
+    "url": "https://github.com/newturk/NexPR/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "chart.js": "^4.4.0",
+    "lucide-react": "^0.294.0",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.20.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.5.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
