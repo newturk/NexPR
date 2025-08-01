@@ -79,4 +79,106 @@
 
 .chartjs-legend-item {
   @apply flex items-center space-x-2 text-sm;
+}
+
+/* Robot Loader Custom Animations */
+@keyframes robotBlink {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0.3; }
+}
+
+@keyframes robotProcess {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes dataStream {
+  0% { transform: translateY(-10px); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(10px); opacity: 0; }
+}
+
+@keyframes antennaGlow {
+  0%, 100% { box-shadow: 0 0 5px #fbbf24; }
+  50% { box-shadow: 0 0 20px #fbbf24, 0 0 30px #f59e0b; }
+}
+
+.robot-eye {
+  animation: robotBlink 3s infinite;
+}
+
+.robot-process {
+  animation: robotProcess 2s ease-in-out infinite;
+}
+
+.data-stream {
+  animation: dataStream 1.5s ease-in-out infinite;
+}
+
+.antenna-glow {
+  animation: antennaGlow 2s ease-in-out infinite;
+}
+
+/* Chatbot Quick Action Button Animations */
+@keyframes snake-border {
+  0% { 
+    background: linear-gradient(90deg, #ef4444 0%, #f59e0b 20%, #10b981 40%, #3b82f6 60%, #8b5cf6 80%, #ec4899 100%);
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+  }
+  50% { 
+    background: linear-gradient(90deg, #ec4899 0%, #ef4444 20%, #f59e0b 40%, #10b981 60%, #3b82f6 80%, #8b5cf6 100%);
+    background-size: 200% 100%;
+    background-position: 100% 50%;
+  }
+  100% { 
+    background: linear-gradient(90deg, #ef4444 0%, #f59e0b 20%, #10b981 40%, #3b82f6 60%, #8b5cf6 80%, #ec4899 100%);
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes snake-move {
+  0% { 
+    background-position: 0% 50%;
+    transform: rotate(0deg);
+  }
+  25% { 
+    background-position: 50% 50%;
+    transform: rotate(90deg);
+  }
+  50% { 
+    background-position: 100% 50%;
+    transform: rotate(180deg);
+  }
+  75% { 
+    background-position: 50% 50%;
+    transform: rotate(270deg);
+  }
+  100% { 
+    background-position: 0% 50%;
+    transform: rotate(360deg);
+  }
+}
+
+.animate-snake-border {
+  background-size: 200% 100%;
+  animation: snake-border 4s linear infinite;
+  padding: 2px;
+}
+
+.animate-snake-border::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: white;
+  border-radius: 9999px;
+  z-index: 1;
+}
+
+.animate-snake-move {
+  background-size: 200% 100%;
+  animation: snake-move 3s linear infinite;
+  border-radius: 9999px;
 } 

@@ -1,60 +1,71 @@
-# 🚀 AI PR Campaign Platform
+# 🚀 AI-Powered PR Campaign Analysis Platform
 
-A cutting-edge AI-powered PR campaign analysis platform that leverages **Qloo's Taste AI™ API** for cultural intelligence and **Google Gemini AI** for comprehensive campaign strategy generation. Built for the **Qloo LLM Hackathon**.
+A comprehensive AI-driven platform that combines **Qloo's Taste AI™ API** for cultural intelligence with **Google Gemini AI** for strategic PR campaign analysis. Built for data-driven marketing professionals who need location-specific cultural insights and automated PR strategy generation.
 
-## ✨ Features
+## ✨ Core Features
 
-### 🎯 **AI-Powered Cultural Intelligence**
-- **Qloo API Integration**: Real cultural intelligence data from Qloo's Taste AI™ API
-- **Gemini AI Analysis**: Advanced AI analysis using Google Gemini 2.0 Flash
-- **Location-Specific Insights**: Tailored analysis for any global location
-- **Real-Time Data**: No hardcoded data - all insights from live API responses
+### 🎯 **Cultural Intelligence Engine**
+- **Qloo API Integration**: Real-time cultural intelligence from Qloo's Taste AI™ API
+- **Global Location Support**: Analyze any location worldwide with cultural insights
+- **Demographic Analysis**: Age-based brand engagement and cultural preferences
+- **Brand Affinity Mapping**: Cultural relevance scores and popularity metrics
 
-### 📊 **Comprehensive Analytics Dashboard**
-- **Population Heatmap**: Age-based brand engagement analysis
-- **Brand Affinity Distribution**: Popularity and engagement metrics
-- **Cultural Relevance Scores**: Multi-dimensional cultural alignment
+### 🤖 **AI-Powered Strategy Generation**
+- **Google Gemini AI**: Advanced analysis using Gemini 2.0 Flash
+- **Comprehensive PR Strategy**: 10 essential PR categories covered
+- **Automated Campaign Planning**: Generate complete PR strategies from cultural data
+- **Interactive AI Chatbot**: Get real-time assistance and strategy refinement
+
+### 📊 **Advanced Analytics Dashboard**
+- **Interactive Visualizations**: Dynamic charts using Chart.js
+- **Cultural Relevance Scoring**: Multi-dimensional cultural alignment metrics
 - **Location Intelligence**: Top locations with cultural evidence
-- **Real-Time Charts**: Dynamic visualizations using Chart.js
+- **Real-Time Data Processing**: Live API responses, no hardcoded data
 
-### 🎨 **Modern UI/UX**
-- **React + Vite**: Fast, modern development experience
+### 🎨 **Modern User Experience**
+- **React 18 + Vite**: Fast, modern development stack
 - **Tailwind CSS**: Beautiful, responsive design
-- **Interactive Components**: Smooth animations and transitions
-- **Mobile Responsive**: Works perfectly on all devices
+- **Mobile-First Design**: Optimized for all devices
+- **Smooth Animations**: Professional UI with engaging interactions
 
-### 🔍 **10 Essential PR Categories**
-1. **Brand Analysis** - Cultural brand positioning
-2. **Competitive Intelligence** - Market competitor insights
-3. **Geographic Intelligence** - Location-based market analysis
-4. **Demographic Analysis** - Target audience insights
-5. **Influencer Discovery** - Cultural influencer identification
-6. **Venue & Media Outlet Discovery** - Strategic venue recommendations
+## 🎯 **10 Essential PR Analysis Categories**
+
+1. **Brand Analysis** - Cultural positioning and brand perception
+2. **Competitive Intelligence** - Market competitor insights and positioning
+3. **Geographic Intelligence** - Location-based market opportunities
+4. **Demographic Analysis** - Target audience cultural preferences
+5. **Influencer Discovery** - Cultural influencer identification and matching
+6. **Venue & Media Discovery** - Strategic venue and media outlet recommendations
 7. **Cultural Partnerships** - Cultural collaboration opportunities
-8. **Trending Analysis** - Cultural trend identification
-9. **Content Intelligence** - Content strategy optimization
-10. **Crisis Management** - Risk assessment and mitigation
+8. **Trending Analysis** - Cultural trend identification and relevance
+9. **Content Intelligence** - Content strategy optimization based on cultural insights
+10. **Crisis Management** - Risk assessment and cultural sensitivity analysis
 
 ## 🛠️ Technology Stack
 
-### **Frontend**
-- **React 18** - Modern UI framework
-- **Vite** - Fast build tool and dev server
+### **Frontend Framework**
+- **React 18** - Modern UI framework with hooks
+- **Vite** - Lightning-fast build tool and dev server
 - **Tailwind CSS** - Utility-first CSS framework
-- **Chart.js + React-Chartjs-2** - Interactive data visualizations
 - **React Router DOM** - Client-side routing
-- **React Hot Toast** - User notifications
-- **Lucide React** - Beautiful icons
+
+### **Data Visualization**
+- **Chart.js** - Interactive charts and graphs
+- **React-Chartjs-2** - React wrapper for Chart.js
 
 ### **AI & APIs**
 - **Google Gemini AI** - Advanced AI analysis (gemini-2.0-flash)
-- **Qloo Taste AI™ API** - Cultural intelligence data
-- **Real-time API Integration** - Live data processing
+- **Qloo Taste AI™ API** - Cultural intelligence and demographic data
+- **Real-time API Integration** - Live data processing and analysis
+
+### **UI/UX Components**
+- **Lucide React** - Beautiful, consistent iconography
+- **React Hot Toast** - User notifications and feedback
+- **React Dropzone** - File upload functionality
 
 ### **Development Tools**
 - **ESLint** - Code quality and consistency
-- **Prettier** - Code formatting
-- **PostCSS** - CSS processing
+- **PostCSS** - CSS processing and optimization
 
 ## 🚀 Quick Start
 
@@ -75,76 +86,79 @@ A cutting-edge AI-powered PR campaign analysis platform that leverages **Qloo's 
    npm install
    ```
 
-3. **Set up environment variables**
+3. **Configure environment variables**
    Create a `.env` file in the root directory:
    ```env
    VITE_GEMINI_API_KEY=your_gemini_api_key_here
    VITE_QLOO_API_KEY=your_qloo_api_key_here
+   VITE_QLOO_BASE_URL=https://hackathon.api.qloo.com
    ```
 
-4. **Start the development server**
+4. **Start development server**
    ```bash
    npm run dev
    ```
 
-5. **Open your browser**
+5. **Open in browser**
    Navigate to `http://localhost:5173`
 
-## 📋 Usage
+## 📋 How to Use
 
 ### 1. **Campaign Setup**
-- Enter your brand name, category, and product details
-- Specify your target location and scope
-- Add budget information and additional notes
-- Upload supporting files (optional)
+- Enter your brand name, product details, and category
+- Specify target location (any global location supported)
+- Set campaign scope and budget range
+- Add additional notes and upload supporting files
 
-### 2. **AI Analysis**
-- Click "Advanced Analysis with Qloo API"
-- System generates comprehensive Qloo API queries
-- Real-time cultural intelligence data collection
-- AI-powered analysis of cultural insights
-
-### 3. **Comprehensive PR Strategy**
+### 2. **AI Analysis Process**
 - Click "Generate PR Campaign Analysis"
-- Receive complete PR strategy based on cultural intelligence
-- Get location-specific recommendations
-- Access data-driven insights and metrics
+- System automatically queries Qloo API for cultural intelligence
+- Gemini AI analyzes cultural data and generates comprehensive strategy
+- Real-time processing with progress indicators
 
-### 4. **Analytics Dashboard**
-- View interactive charts and visualizations
-- Explore cultural relevance scores
-- Analyze demographic insights
-- Review location-specific recommendations
+### 3. **Results & Analytics**
+- View comprehensive PR strategy with cultural insights
+- Explore interactive charts and visualizations
+- Access location-specific recommendations
+- Use AI chatbot for strategy refinement
+
+### 4. **Strategy Refinement**
+- Interactive chatbot for Q&A about your campaign
+- Get additional insights and recommendations
+- Refine strategy based on cultural intelligence
 
 ## 🔧 Configuration
 
 ### Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `VITE_GEMINI_API_KEY` | Google Gemini AI API key | Yes |
-| `VITE_QLOO_API_KEY` | Qloo Taste AI™ API key | Yes |
+| Variable | Description | Required | Default |
+|----------|-------------|----------|---------|
+| `VITE_GEMINI_API_KEY` | Google Gemini AI API key | Yes | - |
+| `VITE_QLOO_API_KEY` | Qloo Taste AI™ API key | Yes | - |
+| `VITE_QLOO_BASE_URL` | Qloo API base URL | No | `https://hackathon.api.qloo.com` |
 
-### API Configuration
+### API Endpoints
 
-The platform is configured to work with:
-- **Qloo API Base URL**: `https://hackathon.api.qloo.com`
-- **Gemini Model**: `gemini-2.0-flash`
+The platform integrates with:
+- **Qloo API**: Cultural intelligence and demographic data
+- **Google Gemini AI**: Strategy generation and analysis
 
 ## 📁 Project Structure
 
 ```
-NexPR/
-├── public/
+Market_Analysis/
 ├── src/
 │   ├── components/
-│   │   ├── AnalysisResults.jsx    # Analytics dashboard
-│   │   ├── CampaignBuilder.jsx    # Campaign form
+│   │   ├── AnalysisResults.jsx    # Analytics dashboard and results
+│   │   ├── CampaignBuilder.jsx    # Campaign form and setup
+│   │   ├── Chatbot.jsx            # AI assistant chatbot
 │   │   ├── Header.jsx             # Navigation header
-│   │   └── FileUpload.jsx         # File upload component
+│   │   └── RobotLoader.jsx        # Loading animations
 │   ├── services/
-│   │   └── geminiService.js       # AI and API services
-│   ├── App.jsx                    # Main application
+│   │   ├── enhancedQlooService.js # Qloo API integration
+│   │   ├── geminiService.js       # Gemini AI integration
+│   │   └── qlooTypes.js           # Type definitions
+│   ├── App.jsx                    # Main application component
 │   ├── main.jsx                   # Application entry point
 │   └── index.css                  # Global styles
 ├── package.json
@@ -152,44 +166,42 @@ NexPR/
 └── README.md
 ```
 
-## 🎯 Key Features Explained
+## 🎯 Key Capabilities
 
-### **Cultural Intelligence Integration**
-The platform leverages Qloo's Taste AI™ API to provide:
-- **Real cultural insights** for any global location
-- **Demographic analysis** based on cultural preferences
-- **Influencer discovery** with cultural relevance
-- **Venue recommendations** with cultural alignment
+### **Cultural Intelligence**
+- **Global Location Support**: Analyze any location worldwide
+- **Real Cultural Data**: No hardcoded data - all insights from live APIs
+- **Demographic Insights**: Age-based cultural preferences and engagement
+- **Brand Affinity Analysis**: Cultural relevance and popularity metrics
 
-### **AI-Powered Analysis**
-Google Gemini AI provides:
-- **Comprehensive PR strategy** generation
-- **Cultural relevance scoring**
-- **Location-specific recommendations**
-- **Data-driven insights** and metrics
+### **AI-Powered Strategy**
+- **Comprehensive Analysis**: 10 essential PR categories covered
+- **Location-Specific Recommendations**: Tailored strategies for target markets
+- **Cultural Sensitivity**: Risk assessment and cultural alignment
+- **Automated Planning**: Generate complete PR strategies from cultural data
 
-### **Real-Time Data Processing**
-- **No hardcoded data** - all insights from live APIs
-- **Dynamic query generation** based on user input
-- **Real-time cultural intelligence** updates
-- **Location-specific analysis** for any global market
+### **Interactive Experience**
+- **Real-Time Processing**: Live API queries and analysis
+- **Visual Analytics**: Interactive charts and data visualization
+- **AI Assistant**: Chatbot for strategy refinement and Q&A
+- **Responsive Design**: Works seamlessly across all devices
 
-## 🔒 Security
+## 🔒 Security & Privacy
 
-- **API keys** are stored in environment variables
-- **No sensitive data** is logged or stored
-- **Secure API communication** with proper headers
-- **Client-side validation** for all inputs
+- **Environment Variables**: API keys stored securely
+- **No Data Storage**: Sensitive data not logged or stored
+- **Secure API Communication**: Proper headers and authentication
+- **Client-Side Validation**: Input validation and sanitization
 
 ## 🚀 Deployment
 
-### **Netlify Deployment**
-1. Connect your GitHub repository to Netlify
+### **Netlify (Recommended)**
+1. Connect GitHub repository to Netlify
 2. Set environment variables in Netlify dashboard
 3. Deploy automatically on push to main branch
 
-### **Vercel Deployment**
-1. Import your GitHub repository to Vercel
+### **Vercel**
+1. Import GitHub repository to Vercel
 2. Configure environment variables
 3. Deploy with automatic CI/CD
 
@@ -214,8 +226,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - **Qloo** for providing the Taste AI™ API and hosting the LLM Hackathon
-- **Google** for Gemini AI capabilities
-- **React** and **Vite** communities for excellent tooling
+- **Google** for Gemini AI capabilities and API access
+- **React** and **Vite** communities for excellent development tooling
 - **Chart.js** for beautiful data visualizations
 
 ## 👨‍💻 Author

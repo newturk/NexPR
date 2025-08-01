@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Upload, Building2, MapPin, Target, DollarSign, FileText, Send, Sparkles, Zap, Database } from 'lucide-react'
+import { Upload, Building2, MapPin, Target, DollarSign, FileText, Send, Sparkles } from 'lucide-react'
 import { useDropzone } from 'react-dropzone'
 import toast from 'react-hot-toast'
-import { generatePRCampaignAnalysis, generateQlooAnalysis, generateComprehensivePRCampaignAnalysis } from '../services/geminiService'
+import { generateComprehensivePRCampaignAnalysis } from '../services/geminiService'
+import RobotLoader from './RobotLoader'
+import Chatbot from './Chatbot'
 
 const CampaignBuilder = ({ setCurrentAnalysis }) => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
-  const [isQlooLoading, setIsQlooLoading] = useState(false)
-  const [qlooResults, setQlooResults] = useState(null)
   const [formData, setFormData] = useState({
     brandName: '',
     productDetails: '',
@@ -62,17 +62,6 @@ const CampaignBuilder = ({ setCurrentAnalysis }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
-    if (!formData.brandName || !formData.productDetails || !formData.category || !formData.location || !formData.targetScope) {
-      toast.error('Please fill in all required fields')
-      return
-    }
-
-    if (!qlooResults) {
-      toast.error('Please run Qloo API analysis first to get cultural insights')
-      return
-    }
-
     setIsLoading(true)
     
     try {
@@ -82,14 +71,23 @@ const CampaignBuilder = ({ setCurrentAnalysis }) => {
           name: file.name,
           size: file.size,
           type: file.type
-        })),
-        qlooData: qlooResults // Include Qloo API data
+        }))
+        // Enhanced Qloo service will be automatically called by generateComprehensivePRCampaignAnalysis
       }
 
+      console.log('Generating comprehensive PR campaign analysis...')
       const analysis = await generateComprehensivePRCampaignAnalysis(campaignData)
-      setCurrentAnalysis(analysis)
+      
+      // Add campaign data to the analysis object so analytics can access it
+      const enhancedAnalysis = {
+        ...analysis,
+        campaignData: campaignData
+      }
+      
+      console.log('Analysis generated successfully:', enhancedAnalysis)
+      setCurrentAnalysis(enhancedAnalysis)
       navigate('/results')
-      toast.success('Comprehensive PR Campaign Analysis generated successfully!')
+      toast.success('Comprehensive PR Campaign Analysis with Enhanced Qloo Intelligence generated successfully!')
     } catch (error) {
       console.error('Error generating analysis:', error)
       toast.error('Failed to generate analysis. Please try again.')
@@ -98,35 +96,7 @@ const CampaignBuilder = ({ setCurrentAnalysis }) => {
     }
   }
 
-  const handleQlooAnalysis = async () => {
-    if (!formData.brandName || !formData.productDetails || !formData.category || !formData.location || !formData.targetScope) {
-      toast.error('Please fill in all required fields first')
-      return
-    }
 
-    setIsQlooLoading(true)
-    setQlooResults(null)
-    
-    try {
-      const campaignData = {
-        ...formData,
-        uploadedFiles: uploadedFiles.map(file => ({
-          name: file.name,
-          size: file.size,
-          type: file.type
-        }))
-      }
-
-      const qlooAnalysis = await generateQlooAnalysis(campaignData)
-      setQlooResults(qlooAnalysis)
-      toast.success('Qloo API Analysis completed!')
-    } catch (error) {
-      console.error('Error generating Qloo analysis:', error)
-      toast.error('Failed to generate Qloo analysis. Please try again.')
-    } finally {
-      setIsQlooLoading(false)
-    }
-  }
 
   const removeFile = (index) => {
     setUploadedFiles(prev => prev.filter((_, i) => i !== index))
@@ -241,15 +211,18 @@ const CampaignBuilder = ({ setCurrentAnalysis }) => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Target Location *
                 </label>
-                <input
-                  type="text"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleInputChange}
-                  className="input-field"
-                  placeholder="e.g., New York City, Mumbai, Global"
-                  required
-                />
+                                  <input
+                    type="text"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleInputChange}
+                    className="input-field"
+                    placeholder="Enter ANY location worldwide - e.g., Tokyo, Brazil, California, Mumbai, London, Paris, etc."
+                    required
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Search for ANY location worldwide - no restrictions! Enter city names, countries, regions, or any geographic location.
+                  </p>
               </div>
               
               <div>
@@ -374,92 +347,24 @@ const CampaignBuilder = ({ setCurrentAnalysis }) => {
             )}
           </div>
 
-          {/* Action Buttons */}
+          {/* Generate Enhanced PR Campaign Analysis Button */}
           <div className="flex justify-center pt-8">
-            {/* Advanced Qloo Analysis Button */}
-            <button
-              type="button"
-              onClick={handleQlooAnalysis}
-              disabled={isQlooLoading}
-              className="btn-secondary flex items-center space-x-3 px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
-            >
-              {isQlooLoading ? (
-                <>
-                  <div className="loading-spinner"></div>
-                  <span>Generating Qloo Analysis...</span>
-                </>
-              ) : (
-                <>
-                  <Zap className="w-5 h-5" />
-                  <span>Advanced Analysis with Qloo API</span>
-                </>
-              )}
-            </button>
+            {isLoading ? (
+              <RobotLoader message="Generating Enhanced PR Campaign Analysis..." />
+            ) : (
+              <button
+                type="submit"
+                className="btn-primary flex items-center space-x-3 px-8 py-4 text-lg font-semibold"
+              >
+                <Send className="w-5 h-5" />
+                <span>Generate Enhanced PR Campaign Analysis</span>
+              </button>
+            )}
           </div>
         </form>
       </div>
 
-      {/* Qloo Results Section */}
-      {qlooResults && (
-        <div className="mt-8 bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-6">
-            <div className="flex items-center space-x-3">
-              <Database className="w-6 h-6 text-white" />
-              <h2 className="text-2xl font-bold text-white">Qloo API Analysis Results</h2>
-            </div>
-            <p className="text-blue-100 mt-1">Cultural intelligence and insights from Qloo's Taste AI™ API</p>
-          </div>
-          
-          <div className="p-6">
-            <div className="bg-gray-50 rounded-lg p-4 mb-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Generated Qloo API Queries:</h3>
-              <div className="space-y-3">
-                {qlooResults.queries && qlooResults.queries.map((query, index) => (
-                  <div key={index} className="bg-white rounded-lg p-4 border border-gray-200">
-                    <h4 className="font-medium text-gray-900 mb-2">Query {index + 1}: {query.entityType}</h4>
-                    <pre className="text-sm text-gray-700 bg-gray-100 p-3 rounded overflow-x-auto">
-                      {JSON.stringify(query.parameters, null, 2)}
-                    </pre>
-                  </div>
-                ))}
-              </div>
-            </div>
 
-            <div className="bg-gray-50 rounded-lg p-4 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Qloo API Response Data:</h3>
-              <div className="bg-white rounded-lg border border-gray-200">
-                <div className="max-h-96 overflow-y-auto p-4">
-                  <pre className="text-sm text-gray-700 whitespace-pre-wrap">
-                    {JSON.stringify(qlooResults.results, null, 2)}
-                  </pre>
-                </div>
-              </div>
-            </div>
-
-            {/* Generate PR Campaign Analysis Button - Appears after Qloo results */}
-            <div className="flex justify-center pt-4 border-t border-gray-200">
-              <button
-                type="button"
-                onClick={handleSubmit}
-                disabled={isLoading}
-                className="btn-primary flex items-center space-x-3 px-8 py-4 text-lg font-semibold"
-              >
-                {isLoading ? (
-                  <>
-                    <div className="loading-spinner"></div>
-                    <span>Generating PR Campaign Analysis...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    <span>Generate PR Campaign Analysis</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Info Section */}
       <div className="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6">
@@ -476,16 +381,29 @@ const CampaignBuilder = ({ setCurrentAnalysis }) => {
               media relations, content strategy, crisis management, measurement KPIs, and actionable recommendations.
             </p>
             <div className="bg-white rounded-lg p-4 border border-gray-200">
-              <h4 className="font-medium text-gray-900 mb-2">🚀 Advanced Qloo API Integration</h4>
+              <h4 className="font-medium text-gray-900 mb-2">🚀 AI-Powered Real Qloo Intelligence (Automatically Included)</h4>
               <p className="text-gray-700 text-sm">
-                The "Advanced Analysis with Qloo API" button leverages Qloo's Taste AI™ API to provide deep cultural intelligence, 
-                demographic insights, and location-based recommendations. This enhances your PR strategy with real cultural data 
-                and market intelligence.
+                Every PR campaign analysis now uses AI to determine the optimal Qloo filters and generate real cultural intelligence:
+              </p>
+              <ul className="text-gray-700 text-sm mt-2 space-y-1">
+                <li>• <strong>AI Filter Selection:</strong> Gemini suggests optimal Qloo filters based on your campaign</li>
+                <li>• <strong>Real Qloo API Queries:</strong> Executes suggested filters to get actual cultural data</li>
+                <li>• <strong>AI Final Analysis:</strong> Gemini analyzes real Qloo responses for strategic insights</li>
+                <li>• <strong>Dynamic Analytics:</strong> Charts and metrics generated from real Qloo data</li>
+                <li>• <strong>No Mock Data:</strong> Everything is based on actual cultural intelligence</li>
+                <li>• <strong>Campaign-Specific:</strong> Filters tailored to your brand, category, and target scope</li>
+                <li>• <strong>Real-Time Intelligence:</strong> Fresh cultural insights for your specific request</li>
+              </ul>
+              <p className="text-gray-700 text-sm mt-2">
+                This provides you with genuine cultural data and market intelligence powered by Qloo's Taste AI™ API, with AI-driven filter optimization for maximum relevance to your campaign.
               </p>
             </div>
           </div>
         </div>
       </div>
+      
+      {/* AI Campaign Assistant Chatbot */}
+      <Chatbot analysisData={null} analyticsData={null} />
     </div>
   )
 }
